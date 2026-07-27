@@ -148,7 +148,7 @@ export function TeamSection() {
                 />
               </div>
 
-              <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-sm h-36 lg:h-40 overflow-hidden flex flex-col justify-center">
+              <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-md border border-[#0A1628]/[0.06] h-36 lg:h-40 overflow-hidden flex flex-col justify-center">
                 <div className="text-[#2E5BA8] text-[10px] tracking-[0.28em] uppercase font-semibold mb-1.5 truncate">
                   {m.role}
                 </div>
