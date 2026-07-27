@@ -138,7 +138,7 @@ export function TeamSection() {
               key={i}
               className={`shrink-0 min-w-0 snap-start flex ${
                 i % 2 === 0 ? 'flex-col' : 'flex-col-reverse'
-              } gap-5 basis-[85%] sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)] xl:basis-[calc(25%-18px)]`}
+              } gap-2 basis-[85%] sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)] xl:basis-[calc(25%-18px)]`}
             >
               <div className="overflow-hidden rounded-3xl bg-[#1B2D4F]">
                 <img
