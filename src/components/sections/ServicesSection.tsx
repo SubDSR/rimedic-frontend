@@ -16,7 +16,10 @@ interface ServiceTab {
   features: Feature[];
 }
 
-const SERVICES_DATA: ServiceTab[] = [
+// Contenido propio de esta sección (tabs animados de la home).
+// No confundir con SERVICES_DATA de src/data/constants.ts, que alimenta
+// las páginas de categoría (ServicesView) con otra estructura (antes/después).
+const HOME_SERVICE_TABS: ServiceTab[] = [
   {
     id: 'medicina-estetica',
     label: 'Medicina estética',
@@ -65,7 +68,7 @@ const SERVICES_DATA: ServiceTab[] = [
 ];
 
 export function ServicesSection() {
-  const [activeTabId, setActiveTabId] = useState<string>(SERVICES_DATA[0].id);
+  const [activeTabId, setActiveTabId] = useState<string>(HOME_SERVICE_TABS[0].id);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -77,8 +80,8 @@ export function ServicesSection() {
   const borderRadius = useTransform(scrollYProgress, [0, 1], [48, 0]);
   const width = useTransform(scrollYProgress, [0, 1], ['92%', '100%']);
 
-  const activeTab = SERVICES_DATA.find((tab) => tab.id === activeTabId) || SERVICES_DATA[0];
-  const isFirstTabActive = activeTabId === SERVICES_DATA[0].id;
+  const activeTab = HOME_SERVICE_TABS.find((tab) => tab.id === activeTabId) || HOME_SERVICE_TABS[0];
+  const isFirstTabActive = activeTabId === HOME_SERVICE_TABS[0].id;
 
   return (
     <section ref={containerRef} id="servicios" className="relative h-[110vh] w-full bg-white">
@@ -103,7 +106,7 @@ export function ServicesSection() {
             <div className="w-full flex flex-col mb-4">
             {/* Tab Bar */}
             <div className="flex items-end gap-0 sm:gap-0 pl-0 sm:pl-0 mb-0 z-20 relative overflow-x-auto no-scrollbar">
-              {SERVICES_DATA.map((tab, idx) => {
+              {HOME_SERVICE_TABS.map((tab, idx) => {
                 const isActive = tab.id === activeTabId;
                 const isFirst = idx === 0;
 
