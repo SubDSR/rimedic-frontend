@@ -181,3 +181,8 @@
     line-height: 1.5;
   }
 }
+
+@keyframes fillbar {
+  from { width: 0%; }
+  to { width: 100%; }
+}

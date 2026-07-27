@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import actor1 from "../../assets/images/testimonios/actor1.png";
 import actor2 from "../../assets/images/testimonios/actor2.png";
 import actor3 from "../../assets/images/testimonios/actor3.png";
@@ -71,15 +72,17 @@ const TESTIMONIALS: Testimonial[] = [
 
 export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const len = TESTIMONIALS.length;
 
   const next = useCallback(() => setActiveIndex((i) => (i + 1) % len), [len]);
   const prev = useCallback(() => setActiveIndex((i) => (i - 1 + len) % len), [len]);
 
   useEffect(() => {
+    if (isPaused) return;
     const t = setInterval(next, 5000);
     return () => clearInterval(t);
-  }, [next]);
+  }, [next, isPaused]);
 
   const main = TESTIMONIALS[activeIndex];
   const secondary1 = TESTIMONIALS[(activeIndex + 1) % len];
@@ -136,7 +139,13 @@ export function TestimonialsSection() {
         </div>
 
         {/* Desktop: Grid asimétrico */}
-        <div className="hidden lg:grid grid-cols-3 gap-6">
+        <div
+          className="hidden lg:grid grid-cols-3 gap-6"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
           {/* Tarjeta Principal — Érika Villalobos */}
           <div className="col-span-2 relative">
             {/* Remate: la porción de la foto que sobresale por ARRIBA de la card.
@@ -171,17 +180,26 @@ export function TestimonialsSection() {
                 className={`absolute bottom-0 right-0 object-cover pointer-events-none z-0 ${main.frameClass ?? "w-[60%]"} ${main.objectPositionClass ?? "object-bottom"}`}
                 style={{ height: MAIN_CARD_H + MAIN_CARD_POKE, ...getFocusStyle(main.focus) }}
               />
-              <div className="relative z-10 w-full md:w-[58%] p-10 lg:p-12 flex flex-col justify-center h-full">
-                <span className="text-[#2E5BA8] text-6xl lg:text-7xl font-serif leading-none mb-4 block">
-                  &ldquo;
-                </span>
-                <p className="text-[#0A1628] text-base lg:text-lg leading-relaxed mb-6">
-                  {main.text}
-                </p>
-                <div className="w-10 h-0.5 bg-[#2E5BA8] mb-4" />
-                <p className="font-display text-[#0A1628] text-xl font-bold">{main.name}</p>
-                <p className="text-[#2E5BA8] text-sm">{main.role}</p>
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="relative z-10 w-full md:w-[58%] p-10 lg:p-12 flex flex-col justify-center h-full"
+                >
+                  <span className="text-[#2E5BA8] text-6xl lg:text-7xl font-serif leading-none mb-4 block">
+                    &ldquo;
+                  </span>
+                  <p className="text-[#0A1628] text-base lg:text-lg leading-relaxed mb-6">
+                    {main.text}
+                  </p>
+                  <div className="w-10 h-0.5 bg-[#2E5BA8] mb-4" />
+                  <p className="font-display text-[#0A1628] text-xl font-bold">{main.name}</p>
+                  <p className="text-[#2E5BA8] text-sm">{main.role}</p>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
@@ -219,17 +237,26 @@ export function TestimonialsSection() {
         {/* Mobile: tarjeta única con dots */}
         <div className="lg:hidden space-y-6">
           <div className="bg-white rounded-3xl relative overflow-hidden min-h-[400px] shadow-2xl">
-            <div className="relative z-10 p-8">
-              <span className="text-[#2E5BA8] text-5xl font-serif leading-none mb-3 block">
-                &ldquo;
-              </span>
-              <p className="text-[#0A1628] text-sm leading-relaxed mb-6">
-                {main.text}
-              </p>
-              <div className="w-8 h-0.5 bg-[#2E5BA8] mb-3" />
-              <p className="font-display text-[#0A1628] text-lg font-bold">{main.name}</p>
-              <p className="text-[#2E5BA8] text-sm">{main.role}</p>
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="relative z-10 p-8"
+              >
+                <span className="text-[#2E5BA8] text-5xl font-serif leading-none mb-3 block">
+                  &ldquo;
+                </span>
+                <p className="text-[#0A1628] text-sm leading-relaxed mb-6">
+                  {main.text}
+                </p>
+                <div className="w-8 h-0.5 bg-[#2E5BA8] mb-3" />
+                <p className="font-display text-[#0A1628] text-lg font-bold">{main.name}</p>
+                <p className="text-[#2E5BA8] text-sm">{main.role}</p>
+              </motion.div>
+            </AnimatePresence>
             <div
               className={`absolute inset-y-0 right-0 pointer-events-none z-0 ${main.frameClass ?? "w-[60%]"}`}
             >
@@ -247,12 +274,21 @@ export function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`transition-all duration-300 ${
-                  i === activeIndex
-                    ? "w-6 h-1.5 bg-[#2E5BA8] rounded-full"
-                    : "w-1.5 h-1.5 rounded-full bg-white/20"
+                className={`relative overflow-hidden transition-all duration-300 rounded-full ${
+                  i === activeIndex ? "w-6 h-1.5 bg-white/20" : "w-1.5 h-1.5 bg-white/20"
                 }`}
-              />
+              >
+                {i === activeIndex && (
+                  <span
+                    key={activeIndex}
+                    className="absolute inset-y-0 left-0 bg-[#2E5BA8] rounded-full"
+                    style={{
+                      animation: isPaused ? "none" : "fillbar 5s linear",
+                      width: isPaused ? "100%" : undefined,
+                    }}
+                  />
+                )}
+              </button>
             ))}
           </div>
         </div>
