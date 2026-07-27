@@ -86,24 +86,30 @@ export function TestimonialsSection() {
   const secondary2 = TESTIMONIALS[(activeIndex + 2) % len];
 
   return (
-    <section id="testimonios" className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50/60 py-20 lg:py-28 overflow-hidden">
-      {/* Abstract blur shapes */}
-      <div className="absolute top-10 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-cyan-200/20 rounded-full blur-2xl pointer-events-none" />
+    <section id="testimonios" className="relative bg-[#0A1628] py-20 lg:py-28 overflow-hidden">
+      {/* Comilla gigante como marca de agua */}
+      <span
+        aria-hidden="true"
+        className="absolute -top-10 left-1/2 -translate-x-1/2 lg:left-auto lg:right-10 lg:translate-x-0 font-serif text-white/[0.04] text-[380px] lg:text-[480px] leading-none pointer-events-none select-none"
+      >
+        &ldquo;
+      </span>
+      {/* Resplandor suave único, no manchas de colores */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#2E5BA8]/[0.08] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-5 lg:px-10">
         {/* Cabecera */}
-        <div className="flex items-start justify-between gap-4 mb-12">
+        <div className="relative flex items-start justify-between gap-4 mb-12">
+          <div className="hidden lg:block w-full h-px bg-white/[0.08] absolute left-0 -bottom-6" />
           <div>
-            <span className="text-[#2E5BA8] text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase mb-2 block">
+            <span className="text-[#5B9BD5] text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase mb-2 block">
               Testimonios
             </span>
-            <h2 className="font-serif text-[#0A1628] text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
+            <h2 className="font-serif text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
               Lo que dicen{" "}
-              <span className="text-[#2E5BA8]">nuestros pacientes</span>
+              <span className="text-[#5B9BD5]">nuestros pacientes</span>
             </h2>
-            <p className="text-[#1B2D4F]/50 text-sm mt-2">
+            <p className="text-white/40 text-sm mt-2">
               Historias reales de personas que confiaron en Rimedic.
             </p>
           </div>
@@ -111,7 +117,7 @@ export function TestimonialsSection() {
             <button
               onClick={prev}
               aria-label="Anterior"
-              className="w-11 h-11 rounded-full bg-white border border-[#0A1628]/15 flex items-center justify-center hover:bg-blue-50 transition-colors shadow-sm"
+              className="w-11 h-11 rounded-full bg-white flex items-center justify-center hover:bg-[#F4F7FB] transition-colors shadow-lg"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E5BA8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 18L9 12L15 6" />
@@ -155,10 +161,10 @@ export function TestimonialsSection() {
             </div>
 
             <div
-              className="rounded-3xl relative shadow-[inset_0_0_0_1px_rgba(219,234,254,0.5)] overflow-hidden"
+              className="rounded-3xl relative shadow-2xl overflow-hidden"
               style={{ height: MAIN_CARD_H }}
             >
-              <div className="absolute inset-0 bg-blue-50/80 backdrop-blur-sm" />
+              <div className="absolute inset-0 bg-white" />
               <img
                 src={main.image}
                 alt={main.name}
@@ -184,7 +190,7 @@ export function TestimonialsSection() {
             {[secondary1, secondary2].map((t, i) => (
               <div
                 key={i}
-                className="flex-1 bg-blue-50/80 rounded-3xl relative overflow-hidden min-h-[210px] backdrop-blur-sm border border-blue-100/50"
+                className="flex-1 bg-white rounded-3xl relative overflow-hidden min-h-[210px] shadow-lg"
               >
                 <div className="relative z-10 w-[58%] p-6 lg:p-8 flex flex-col justify-center h-full">
                   <span className="text-[#2E5BA8] text-3xl lg:text-4xl font-serif leading-none mb-2 block">
@@ -212,7 +218,7 @@ export function TestimonialsSection() {
 
         {/* Mobile: tarjeta única con dots */}
         <div className="lg:hidden space-y-6">
-          <div className="bg-blue-50/80 rounded-3xl relative overflow-hidden min-h-[400px] backdrop-blur-sm border border-blue-100/50">
+          <div className="bg-white rounded-3xl relative overflow-hidden min-h-[400px] shadow-2xl">
             <div className="relative z-10 p-8">
               <span className="text-[#2E5BA8] text-5xl font-serif leading-none mb-3 block">
                 &ldquo;
@@ -244,7 +250,7 @@ export function TestimonialsSection() {
                 className={`transition-all duration-300 ${
                   i === activeIndex
                     ? "w-6 h-1.5 bg-[#2E5BA8] rounded-full"
-                    : "w-1.5 h-1.5 rounded-full bg-[#0A1628]/15"
+                    : "w-1.5 h-1.5 rounded-full bg-white/20"
                 }`}
               />
             ))}
