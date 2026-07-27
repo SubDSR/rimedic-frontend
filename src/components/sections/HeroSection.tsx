@@ -1,4 +1,4 @@
-import heroPlaceholder from "@/assets/images/hero-banner-placeholder.png";
+import heroPlaceholder from "@/assets/images/hero-banner-placeholder.webp";
 import { wa } from "@/data/whatsapp";
 
 export function HeroSection() {

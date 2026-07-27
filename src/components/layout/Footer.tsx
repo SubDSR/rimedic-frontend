@@ -1,6 +1,6 @@
 import { Instagram, Facebook, MessageCircle, Mail } from "lucide-react";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
-import logoImg from "@/assets/images/logo.png";
+import logoImg from "@/assets/images/logo.webp";
 import { wa } from "@/data/whatsapp";
 import type { PageView } from "@/types";
 

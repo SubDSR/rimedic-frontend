@@ -2,8 +2,8 @@ import { Sparkles, Activity, Award, MapPin } from "lucide-react";
 import { RevealDiv } from "@/components/ui/RevealDiv";
 import { CREDENTIALS, SERVICES_DATA } from "@/data/constants";
 import { TeamSection } from "@/components/sections/TeamSection";
-import doctorImg from "@/assets/images/doctor-brayan.png";
-import clinicImg from "@/assets/images/clinic-reception.png";
+import doctorImg from "@/assets/images/doctor-brayan.webp";
+import clinicImg from "@/assets/images/clinic-reception.webp";
 
 const leftItems = [
   { Icon: Sparkles, ...SERVICES_DATA.medicina },

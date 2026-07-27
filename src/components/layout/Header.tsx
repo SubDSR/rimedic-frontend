@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { StoreIcon } from "@/components/ui/StoreIcon";
-import logoImg from "@/assets/images/logo.png";
+import logoImg from "@/assets/images/logo.webp";
 import { NAV_ITEMS } from "@/data/constants";
 import type { PageView } from "@/types";
 

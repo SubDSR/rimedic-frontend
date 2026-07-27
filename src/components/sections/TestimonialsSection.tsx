@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import actor1 from "../../assets/images/testimonios/actor1.png";
-import actor2 from "../../assets/images/testimonios/actor2.png";
-import actor3 from "../../assets/images/testimonios/actor3.png";
+import actor1 from "../../assets/images/testimonios/actor1.webp";
+import actor2 from "../../assets/images/testimonios/actor2.webp";
+import actor3 from "../../assets/images/testimonios/actor3.webp";
 
 interface Testimonial {
   name: string;
