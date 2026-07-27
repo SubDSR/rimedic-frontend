@@ -1,5 +1,4 @@
 import { Sparkles, Activity, Award, MapPin } from "lucide-react";
-import { GoldLabel } from "@/components/ui/GoldLabel";
 import { RevealDiv } from "@/components/ui/RevealDiv";
 import { CREDENTIALS, SERVICES_DATA } from "@/data/constants";
 import { TeamSection } from "@/components/sections/TeamSection";
