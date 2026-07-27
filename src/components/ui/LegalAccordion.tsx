@@ -26,7 +26,7 @@ export function LegalAccordion({ sections, maxHeight = "600px" }: LegalAccordion
           >
             <div className="flex items-center gap-3">
               {s.icon && (
-                <span className={`transition-colors ${openIdx === i ? "text-[#C9A96E]" : "text-[#0A1628]/30 group-hover:text-[#C9A96E]"}`}>
+                <span className={`transition-colors ${openIdx === i ? "text-[#2E5BA8]" : "text-[#0A1628]/30 group-hover:text-[#2E5BA8]"}`}>
                   {s.icon}
                 </span>
               )}

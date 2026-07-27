@@ -54,7 +54,7 @@ export function TermsPage({ onBack }: TermsPageProps) {
       <div className="border-b border-[#0A1628]/[0.07] bg-white py-10">
         <div className="max-w-3xl mx-auto px-5 lg:px-10">
           <div className="flex items-start gap-3 mb-5">
-            <CheckCircle size={17} className="text-[#C9A96E] flex-shrink-0 mt-0.5" />
+            <CheckCircle size={17} className="text-[#2E5BA8] flex-shrink-0 mt-0.5" />
             <div>
               <div className="text-[#0A1628] font-medium text-sm">Medios de pago aceptados</div>
               <div className="text-[#0A1628]/45 text-xs mt-0.5">Los pagos se coordinan vía WhatsApp o de forma presencial. No contamos con pasarela de pago en línea.</div>

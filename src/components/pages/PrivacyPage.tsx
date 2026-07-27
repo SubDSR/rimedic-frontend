@@ -37,7 +37,7 @@ export function PrivacyPage({ onBack }: PrivacyPageProps) {
               { icon: <CheckCircle size={20} />, label: "Sin Ventas", sub: "No cedemos tus datos" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center gap-2 py-5 px-3 border border-[#0A1628]/[0.09] bg-[#F4F7FB]">
-                <span className="text-[#C9A96E]">{item.icon}</span>
+                <span className="text-[#2E5BA8]">{item.icon}</span>
                 <div className="text-[#0A1628] text-[13px] font-medium">{item.label}</div>
                 <div className="text-[#0A1628]/40 text-[11px]">{item.sub}</div>
               </div>
