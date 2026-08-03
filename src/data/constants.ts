@@ -144,5 +144,4 @@ export const NAV_ITEMS: NavItem[] = [
       "Pink intimate",
     ],
   },
-  { label: "Blog", href: null, action: "blog", cat: null },
 ];
