@@ -75,6 +75,8 @@ export interface Sede {
 
 export interface NavItem {
   label: string;
-  href: string | null;
+  href?: string | null;
+  action?: string | null;
   cat: PageView | null;
+  subItems?: string[];
 }
