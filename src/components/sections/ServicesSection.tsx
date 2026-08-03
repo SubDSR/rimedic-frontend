@@ -100,7 +100,7 @@ const cardVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: 'easeOut', delay: i * 0.08 },
+    transition: { duration: 0.45, ease: 'easeOut' as const, delay: i * 0.08 },
   }),
 };
 
