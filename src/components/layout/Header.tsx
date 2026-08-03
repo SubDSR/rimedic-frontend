@@ -45,17 +45,6 @@ export function Header({ onNav }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Barra superior */}
-      <div className="bg-[#1B2D4F] hidden sm:block">
-        <div className="max-w-7xl mx-auto px-5 lg:px-10 h-10 flex items-center justify-end">
-          <button
-            onClick={() => goToSection("blog")}
-            className="text-white hover:text-white text-sm tracking-wide transition-colors"
-          >
-            Blog
-          </button>
-        </div>
-      </div>
 
       {/* Barra principal */}
       <div className="bg-white border-b border-[#0A1628]/[0.06]">
