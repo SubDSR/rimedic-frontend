@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { PromoHighlightsSection } from "@/components/sections/PromoHighlightsSection";
 import { DoctorSection } from "@/components/sections/DoctorSection";
+import { TeamSection } from "@/components/sections/TeamSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { QuienesSomosSection } from "@/components/sections/QuienesSomosSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -37,10 +38,11 @@ export default function App() {
           <PromoHighlightsSection />
           <ServicesSection />
           <DoctorSection />
-          <TestimonialsSection />
           <QuienesSomosSection />
+          <TeamSection />
           <ContactSection />
           <SedesSection />
+          <TestimonialsSection />
         </>
       )}
 
