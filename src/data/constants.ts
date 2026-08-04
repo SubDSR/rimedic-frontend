@@ -97,8 +97,51 @@ export const SEDES: Sede[] = [
 ];
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Promociones", href: "#hero", cat: null },
-  { label: "Medicina Estética", href: null, cat: "medicina" as PageView },
-  { label: "Aparatologías", href: null, cat: "aparatologias" as PageView },
-  { label: "Limpieza y Vitalidad", href: null, cat: "limpieza" as PageView },
+  { label: "Promociones", href: "#hero", action: "hero", cat: null },
+  {
+    label: "Medicina Estética",
+    href: null,
+    action: null,
+    cat: "medicina" as PageView,
+    subItems: [
+      "Ácido hialurónico (rino, labios, glúteos, anclaje)",
+      "Enzimas",
+      "Bioestimuladores",
+      "Botox",
+      "Exosomas",
+      "Polyphil (polinucleótidos)",
+      "Ellansé",
+      "Radiesse",
+      "Jalupro",
+      "Tratamiento de ojeras",
+    ],
+  },
+  {
+    label: "Aparatologías",
+    href: null,
+    action: null,
+    cat: "aparatologias" as PageView,
+    subItems: [
+      "Exion",
+      "Hydrafacial",
+      "CO2 fraccionado",
+      "Bodysculpt",
+      "Depilación láser",
+      "Radiofrecuencia",
+    ],
+  },
+  {
+    label: "Limpieza Profunda",
+    href: null,
+    action: null,
+    cat: "limpieza" as PageView,
+    subItems: [
+      "Hydrafacial",
+      "Vitamina C",
+      "Cóctel de vida",
+      "Mesoterapia facial",
+      "PRP (plasma rico en plaquetas)",
+      "Pink intimate",
+    ],
+  },
 ];
