@@ -1,7 +1,6 @@
 import { Sparkles, Activity, Award, MapPin } from "lucide-react";
 import { RevealDiv } from "@/components/ui/RevealDiv";
 import { CREDENTIALS, SERVICES_DATA } from "@/data/constants";
-import { TeamSection } from "@/components/sections/TeamSection";
 import doctorImg from "@/assets/images/doctor-brayan.webp";
 import clinicImg from "@/assets/images/clinic-reception.webp";
 
@@ -121,10 +120,6 @@ export function DoctorSection() {
             </div>
           </div>
         </RevealDiv>
-      </div>
-
-      <div className="mt-20 lg:mt-24">
-        <TeamSection />
       </div>
     </section>
   );
