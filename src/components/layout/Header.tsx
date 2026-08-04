@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Search, ShoppingBag, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { CallModal } from "@/components/layout/CallModal";
+import { StoreIcon } from "@/components/ui/StoreIcon";
 import logoImg from "@/assets/images/logo.webp";
 import { NAV_ITEMS } from "@/data/constants";
 import type { PageView, NavItem } from "@/types";
@@ -100,16 +101,13 @@ export function Header({ onNav }: HeaderProps) {
               <Search size={16} className="text-[#0A1628]/40 flex-shrink-0" />
             </div>
 
-            {/* Ícono Carrito con contador 0 (Azul) */}
+            {/* Ícono Sedes con contador 0 (Azul) */}
             <button
               onClick={() => goToSection("sedes")}
               className="relative text-[#0A1628] hover:text-[#2E5BA8] p-1.5 transition-colors cursor-pointer"
-              aria-label="Carrito de compras / Sedes"
+              aria-label="Sedes"
             >
-              <ShoppingBag size={24} />
-              <span className="absolute -top-1 -right-1 bg-[#2E5BA8] text-white text-[10px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center">
-                0
-              </span>
+              <StoreIcon size={24} />
             </button>
           </div>
         </div>
@@ -162,9 +160,8 @@ export function Header({ onNav }: HeaderProps) {
 
         {/* Menú mobile (hamburguesa) */}
         <div
-          className={`lg:hidden bg-white border-t border-[#0A1628]/10 overflow-y-auto transition-all duration-300 ${
-            mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`lg:hidden bg-white border-t border-[#0A1628]/10 overflow-y-auto transition-all duration-300 ${mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="px-5 py-4 flex flex-col gap-3">
             {/* Buscador Mobile */}
@@ -199,9 +196,8 @@ export function Header({ onNav }: HeaderProps) {
                     >
                       <ChevronDown
                         size={16}
-                        className={`transition-transform duration-200 ${
-                          mobileExpandedCat === item.label ? "rotate-180" : ""
-                        }`}
+                        className={`transition-transform duration-200 ${mobileExpandedCat === item.label ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
                   )}
