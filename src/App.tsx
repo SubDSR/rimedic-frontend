@@ -8,7 +8,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { PromoHighlightsSection } from "@/components/sections/PromoHighlightsSection";
 import { DoctorSection } from "@/components/sections/DoctorSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { BlogSection } from "@/components/sections/BlogSection";
+import { QuienesSomosSection } from "@/components/sections/QuienesSomosSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { SedesSection } from "@/components/sections/SedesSection";
 import { ServicesView } from "@/components/pages/ServicesView";
@@ -38,7 +38,7 @@ export default function App() {
           <ServicesSection />
           <DoctorSection />
           <TestimonialsSection />
-          <BlogSection />
+          <QuienesSomosSection />
           <ContactSection />
           <SedesSection />
         </>

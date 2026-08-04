@@ -49,10 +49,10 @@ export function Header({ onNav }: HeaderProps) {
       <div className="bg-[#1B2D4F] hidden sm:block">
         <div className="max-w-7xl mx-auto px-5 lg:px-10 h-10 flex items-center justify-end">
           <button
-            onClick={() => goToSection("blog")}
+            onClick={() => goToSection("quienes-somos")}
             className="text-white hover:text-white text-sm tracking-wide transition-colors"
           >
-            Blog
+            Quiénes somos
           </button>
         </div>
       </div>
@@ -170,10 +170,10 @@ export function Header({ onNav }: HeaderProps) {
             Sedes
           </button>
           <button
-            onClick={() => goToSection("blog")}
+            onClick={() => goToSection("quienes-somos")}
             className="text-left text-[#0A1628]/80 hover:text-[#2E5BA8] text-sm py-2"
           >
-            Blog
+            Quiénes somos
           </button>
         </div>
       </div>
