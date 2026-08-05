@@ -71,6 +71,7 @@ export interface Sede {
   whatsapp: string;
   hours: string;
   mapSrc: string;
+  mapUrl: string;
 }
 
 export interface NavSubItem {

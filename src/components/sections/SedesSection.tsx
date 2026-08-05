@@ -10,7 +10,7 @@ export function SedesSection() {
   const sede = SEDES[active];
 
   const contactRows = [
-    { Icon: MapPin, label: "Dirección", value: sede.address, sub: sede.city, href: undefined as string | undefined },
+    { Icon: MapPin, label: "Dirección", value: sede.address, sub: sede.city, href: sede.mapUrl },
     { Icon: Clock, label: "Horario", value: sede.hours, sub: undefined as string | undefined, href: undefined as string | undefined },
     { Icon: Phone, label: "Teléfono", value: sede.phone, sub: undefined as string | undefined, href: `tel:${sede.phone.replace(/\s/g, "")}` },
     { Icon: MessageCircle, label: "WhatsApp", value: sede.whatsapp, sub: undefined as string | undefined, href: wa(`Hola, quisiera consultar sobre la ${sede.name}.`) },
@@ -84,15 +84,26 @@ export function SedesSection() {
                   </div>
                 </div>
               ))}
-              <a
-                href={wa(`Hola, quisiera agendar una cita en la ${sede.name}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[#0A1628] hover:bg-[#2E5BA8] text-white text-sm px-6 py-3.5 transition-colors duration-200 mt-1"
-              >
-                <MessageCircle size={14} />
-                Agendar en esta sede
-              </a>
+              <div className="grid grid-cols-2 gap-3 mt-1">
+                <a
+                  href={wa(`Hola, quisiera agendar una cita en la ${sede.name}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-[#0A1628] hover:bg-[#2E5BA8] text-white text-sm px-4 py-3.5 transition-colors duration-200"
+                >
+                  <MessageCircle size={14} />
+                  Agendar
+                </a>
+                <a
+                  href={sede.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-white border border-[#0A1628]/20 hover:border-[#2E5BA8] hover:text-[#2E5BA8] text-[#0A1628] text-sm px-4 py-3.5 transition-colors duration-200"
+                >
+                  <MapPin size={14} />
+                  Cómo llegar
+                </a>
+              </div>
             </div>
           </RevealDiv>
         </div>
