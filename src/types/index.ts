@@ -73,10 +73,15 @@ export interface Sede {
   mapSrc: string;
 }
 
+export interface NavSubItem {
+  label: string;
+  children?: string[];
+}
+
 export interface NavItem {
   label: string;
   href?: string | null;
   action?: string | null;
   cat: PageView | null;
-  subItems?: string[];
+  subItems?: (string | NavSubItem)[];
 }

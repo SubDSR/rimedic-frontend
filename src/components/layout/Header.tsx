@@ -1,22 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "@/components/figma/ImageWithFallback";
 import { CallModal } from "@/components/layout/CallModal";
 import { StoreIcon } from "@/components/ui/StoreIcon";
 import logoImg from "@/assets/images/logo.webp";
 import { NAV_ITEMS } from "@/data/constants";
-import type { PageView, NavItem } from "@/types";
+import type { PageView, NavItem, NavSubItem } from "@/types";
 
 interface HeaderProps {
   onNav: (v: PageView) => void;
 }
+
+const subLabel = (sub: string | NavSubItem) => (typeof sub === "string" ? sub : sub.label);
+const subChildren = (sub: string | NavSubItem) => (typeof sub === "string" ? undefined : sub.children);
 
 export function Header({ onNav }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [callModalOpen, setCallModalOpen] = useState(false);
   const [searchQ, setSearchQ] = useState("");
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
   const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>(null);
+  const [mobileExpandedSub, setMobileExpandedSub] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -40,6 +45,7 @@ export function Header({ onNav }: HeaderProps) {
   const handleNavClick = (item: NavItem) => {
     setMobileOpen(false);
     setActiveDropdown(null);
+    setActiveSubDropdown(null);
     if (item.cat) {
       onNav(item.cat);
       window.scrollTo({ top: 0 });
@@ -121,7 +127,10 @@ export function Header({ onNav }: HeaderProps) {
                   key={item.label}
                   className="relative group"
                   onMouseEnter={() => item.subItems && setActiveDropdown(item.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseLeave={() => {
+                    setActiveDropdown(null);
+                    setActiveSubDropdown(null);
+                  }}
                 >
                   <button
                     onClick={() => handleNavClick(item)}
@@ -140,15 +149,43 @@ export function Header({ onNav }: HeaderProps) {
                   {item.subItems && activeDropdown === item.label && (
                     <div className="absolute left-0 top-full pt-1 z-50 min-w-[240px] animate-in fade-in slide-in-from-top-2 duration-150">
                       <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
-                        {item.subItems.map((sub) => (
-                          <button
-                            key={sub}
-                            onClick={() => handleNavClick(item)}
-                            className="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-gray-700 hover:text-[#2E5BA8] hover:bg-slate-50 transition-colors block"
-                          >
-                            {sub}
-                          </button>
-                        ))}
+                        {item.subItems.map((sub) => {
+                          const label = subLabel(sub);
+                          const children = subChildren(sub);
+                          return (
+                            <div
+                              key={label}
+                              className="relative"
+                              onMouseEnter={() => children && setActiveSubDropdown(label)}
+                              onMouseLeave={() => children && setActiveSubDropdown(null)}
+                            >
+                              <button
+                                onClick={() => handleNavClick(item)}
+                                className="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-gray-700 hover:text-[#2E5BA8] hover:bg-slate-50 transition-colors flex items-center justify-between gap-2"
+                              >
+                                {label}
+                                {children && <ChevronRight size={14} className="opacity-50 shrink-0" />}
+                              </button>
+
+                              {/* Submenú lateral (2do nivel) — ej. Ácido hialurónico */}
+                              {children && activeSubDropdown === label && (
+                                <div className="absolute left-full top-0 pl-1 z-50 min-w-[180px] animate-in fade-in slide-in-from-left-2 duration-150">
+                                  <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
+                                    {children.map((child) => (
+                                      <button
+                                        key={child}
+                                        onClick={() => handleNavClick(item)}
+                                        className="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-gray-700 hover:text-[#2E5BA8] hover:bg-slate-50 transition-colors block"
+                                      >
+                                        {child}
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -188,9 +225,10 @@ export function Header({ onNav }: HeaderProps) {
 
                   {item.subItems && (
                     <button
-                      onClick={() =>
-                        setMobileExpandedCat((prev) => (prev === item.label ? null : item.label))
-                      }
+                      onClick={() => {
+                        setMobileExpandedCat((prev) => (prev === item.label ? null : item.label));
+                        setMobileExpandedSub(null);
+                      }}
                       className="p-1 text-gray-500 hover:text-[#2E5BA8]"
                       aria-label="Expandir submenú"
                     >
@@ -206,15 +244,52 @@ export function Header({ onNav }: HeaderProps) {
                 {/* Subcategorías Mobile */}
                 {item.subItems && mobileExpandedCat === item.label && (
                   <div className="pl-4 pb-2 flex flex-col gap-1.5 bg-slate-50 rounded-lg p-2 mb-2">
-                    {item.subItems.map((sub) => (
-                      <button
-                        key={sub}
-                        onClick={() => handleNavClick(item)}
-                        className="text-left text-xs text-gray-600 hover:text-[#2E5BA8] py-1"
-                      >
-                        • {sub}
-                      </button>
-                    ))}
+                    {item.subItems.map((sub) => {
+                      const label = subLabel(sub);
+                      const children = subChildren(sub);
+
+                      if (!children) {
+                        return (
+                          <button
+                            key={label}
+                            onClick={() => handleNavClick(item)}
+                            className="text-left text-xs text-gray-600 hover:text-[#2E5BA8] py-1"
+                          >
+                            • {label}
+                          </button>
+                        );
+                      }
+
+                      return (
+                        <div key={label}>
+                          <button
+                            onClick={() =>
+                              setMobileExpandedSub((prev) => (prev === label ? null : label))
+                            }
+                            className="w-full flex items-center justify-between text-left text-xs text-gray-600 hover:text-[#2E5BA8] py-1"
+                          >
+                            <span>• {label}</span>
+                            <ChevronDown
+                              size={12}
+                              className={`transition-transform duration-200 ${mobileExpandedSub === label ? "rotate-180" : ""}`}
+                            />
+                          </button>
+                          {mobileExpandedSub === label && (
+                            <div className="pl-4 flex flex-col gap-1 pt-1">
+                              {children.map((child) => (
+                                <button
+                                  key={child}
+                                  onClick={() => handleNavClick(item)}
+                                  className="text-left text-[11px] text-gray-500 hover:text-[#2E5BA8] py-1"
+                                >
+                                  • {child}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>

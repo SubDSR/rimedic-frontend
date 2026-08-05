@@ -104,7 +104,7 @@ export const NAV_ITEMS: NavItem[] = [
     action: null,
     cat: "medicina" as PageView,
     subItems: [
-      "Ácido hialurónico (rino, labios, glúteos, anclaje)",
+      { label: "Ácido hialurónico", children: ["Rino", "Labios", "Glúteos", "Anclaje"] },
       "Enzimas",
       "Bioestimuladores",
       "Botox",
