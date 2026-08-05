@@ -92,8 +92,26 @@ export const BLOG: BlogPost[] = [
 ];
 
 export const SEDES: Sede[] = [
-  { name: "Sede Miraflores", address: "Av. Del Ejército 670, Miraflores", city: "Lima, Perú", phone: "+51 937-540-393", whatsapp: "946 795 583", hours: "Lun – Sáb · 09:30 – 21:00", mapSrc: "https://maps.google.com/maps?q=Av.+del+Ejercito+670,+Miraflores,+Lima,+Peru&output=embed&z=16" },
-  { name: "Sede San Isidro", address: "Av. Conquistadores 456, San Isidro", city: "Lima, Perú", phone: "+51 937-540-393", whatsapp: "946 795 583", hours: "Lun – Sáb · 10:00 – 20:00", mapSrc: "https://maps.google.com/maps?q=Av.+Conquistadores,+San+Isidro,+Lima,+Peru&output=embed&z=16" },
+  { 
+    name: "Sede Miraflores", 
+    address: "Av. Del Ejército 670, Miraflores", 
+    city: "Lima, Perú", 
+    phone: "+51 937-540-393", 
+    whatsapp: "946 795 583", 
+    hours: "Lun – Sáb · 09:30 – 21:00", 
+    mapSrc: "https://maps.google.com/maps?q=Av.+del+Ejercito+670,+Miraflores,+Lima,+Peru&output=embed&z=16",
+    mapUrl: "https://maps.google.com/maps?q=Av.+del+Ejercito+670,+Miraflores,+Lima,+Peru" 
+  },
+  { 
+    name: "Sede San Isidro", 
+    address: "Av. Conquistadores 456, San Isidro", 
+    city: "Lima, Perú", 
+    phone: "+51 937-540-393", 
+    whatsapp: "946 795 583", 
+    hours: "Lun – Sáb · 10:00 – 20:00", 
+    mapSrc: "https://maps.google.com/maps?q=Av.+Conquistadores,+San+Isidro,+Lima,+Peru&output=embed&z=16",
+    mapUrl: "https://maps.google.com/maps?q=Av.+Conquistadores,+San+Isidro,+Lima,+Peru" 
+  },
 ];
 
 export const NAV_ITEMS: NavItem[] = [
